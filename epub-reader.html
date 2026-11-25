@@ -1,249 +1,249 @@
 <!doctype html>
 <html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pratinjau EPUB | Quarto Template</title>
-  <style>
-    :root {
-      color-scheme: light;
-      font-family: system-ui, sans-serif;
-      color: #23364a;
-      background: #f3f6f9;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: auto 1fr;
-      overflow-x: hidden;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      min-width: 0;
-      flex-wrap: wrap;
-      padding: 0.75rem clamp(1rem, 4vw, 2rem);
-      background: #315479;
-      color: #fff;
-    }
-
-    header h1 {
-      flex: 1;
-      min-width: 0;
-      margin: 0;
-      font-size: 1.15rem;
-    }
-
-    a,
-    button,
-    select {
-      font: inherit;
-    }
-
-    header a,
-    button,
-    select {
-      min-height: 2.5rem;
-      border: 1px solid #d5deea;
-      border-radius: 0.4rem;
-      padding: 0.45rem 0.75rem;
-    }
-
-    header a {
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.6);
-      text-decoration: none;
-    }
-
-    main {
-      width: min(100%, 1100px);
-      min-width: 0;
-      margin: 1.25rem auto;
-      padding: 0 clamp(0.75rem, 3vw, 1.5rem);
-      display: grid;
-      grid-template-rows: auto minmax(0, 1fr) auto;
-      gap: 0.75rem;
-      min-height: 0;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      min-width: 0;
-    }
-
-    #chapter-select {
-      width: min(55vw, 30rem);
-      min-width: 0;
-      background: #fff;
-    }
-
-    button {
-      color: #23364a;
-      background: #fff;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      cursor: wait;
-      opacity: 0.55;
-    }
-
-    #viewer {
-      position: relative;
-      min-width: 0;
-      min-height: 60vh;
-      height: calc(100vh - 11rem);
-      overflow: hidden;
-      border: 1px solid #d5deea;
-      border-radius: 0.5rem;
-      background: #e8dfd0;
-      box-shadow: 0 0.75rem 2rem rgba(35, 54, 74, 0.16);
-      perspective: 1600px;
-      isolation: isolate;
-    }
-
-    #viewer.is-spread::after {
-      position: absolute;
-      z-index: 2;
-      inset: 0;
-      pointer-events: none;
-      content: "";
-      background: linear-gradient(
-        90deg,
-        transparent calc(50% - 1rem),
-        rgba(70, 53, 32, 0.08) 50%,
-        transparent calc(50% + 1rem)
-      );
-    }
-
-    #turn-sheet {
-      position: absolute;
-      z-index: 3;
-      top: 0;
-      bottom: 0;
-      display: none;
-      width: 50%;
-      pointer-events: none;
-      background: linear-gradient(90deg, #f8f4ec, #fffefa 22%, #eee6d9);
-      backface-visibility: hidden;
-      transform-style: preserve-3d;
-    }
-
-    #viewer.is-single #turn-sheet {
-      width: 100%;
-    }
-
-    #viewer.turn-next #turn-sheet {
-      right: 0;
-      transform-origin: left center;
-      animation: turn-next 480ms ease-in forwards;
-    }
-
-    #viewer.turn-prev #turn-sheet {
-      left: 0;
-      transform-origin: right center;
-      animation: turn-prev 480ms ease-in forwards;
-    }
-
-    #viewer.turn-next #turn-sheet,
-    #viewer.turn-prev #turn-sheet {
-      display: block;
-    }
-
-    @keyframes turn-next {
-      from {
-        transform: rotateY(0);
-        box-shadow: -0.5rem 0 1rem rgba(35, 28, 20, 0.16);
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pratinjau EPUB | Quarto Template</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+        color: #23364a;
+        background: #f3f6f9;
       }
 
-      to {
-        transform: rotateY(-180deg);
-        box-shadow: -1.5rem 0 2rem rgba(35, 28, 20, 0.25);
-      }
-    }
-
-    @keyframes turn-prev {
-      from {
-        transform: rotateY(0);
-        box-shadow: 0.5rem 0 1rem rgba(35, 28, 20, 0.16);
+      * {
+        box-sizing: border-box;
       }
 
-      to {
-        transform: rotateY(180deg);
-        box-shadow: 1.5rem 0 2rem rgba(35, 28, 20, 0.25);
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+        overflow-x: hidden;
       }
-    }
 
-    #status {
-      min-height: 1.5rem;
-      margin: 0;
-      text-align: center;
-    }
-
-    @media (max-width: 600px) {
       header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-width: 0;
         flex-wrap: wrap;
+        padding: 0.75rem clamp(1rem, 4vw, 2rem);
+        background: #315479;
+        color: #fff;
       }
 
       header h1 {
-        flex-basis: 100%;
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        font-size: 1.15rem;
+      }
+
+      a,
+      button,
+      select {
+        font: inherit;
+      }
+
+      header a,
+      button,
+      select {
+        min-height: 2.5rem;
+        border: 1px solid #d5deea;
+        border-radius: 0.4rem;
+        padding: 0.45rem 0.75rem;
+      }
+
+      header a {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+      }
+
+      main {
+        width: min(100%, 1100px);
+        min-width: 0;
+        margin: 1.25rem auto;
+        padding: 0 clamp(0.75rem, 3vw, 1.5rem);
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        gap: 0.75rem;
+        min-height: 0;
       }
 
       nav {
-        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        min-width: 0;
       }
 
       #chapter-select {
-        order: 1;
-        flex-basis: 100%;
-        width: 100%;
+        width: min(55vw, 30rem);
+        min-width: 0;
+        background: #fff;
       }
 
-      #previous,
-      #next {
-        flex: 1;
+      button {
+        color: #23364a;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: wait;
+        opacity: 0.55;
       }
 
       #viewer {
-        height: calc(100vh - 14rem);
+        position: relative;
+        min-width: 0;
+        min-height: 60vh;
+        height: calc(100vh - 11rem);
+        overflow: hidden;
+        border: 1px solid #d5deea;
+        border-radius: 0.5rem;
+        background: #e8dfd0;
+        box-shadow: 0 0.75rem 2rem rgba(35, 54, 74, 0.16);
+        perspective: 1600px;
+        isolation: isolate;
       }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Pratinjau EPUB: Quarto Template</h1>
-    <a href="./index.html">Kembali ke buku</a>
-    <a href="./Quarto-Template.epub" download>Unduh EPUB</a>
-  </header>
-  <main>
-    <nav aria-label="Navigasi buku">
-      <button id="previous" type="button" disabled>Sebelumnya</button>
-      <label for="chapter-select" hidden>Pilih bab</label>
-      <select id="chapter-select" aria-label="Pilih bab" disabled>
-        <option value="">Sampul</option>
-      </select>
-      <button id="next" type="button" disabled>Berikutnya</button>
-    </nav>
-    <div id="viewer" class="is-single" aria-label="Pembaca EPUB">
-      <div id="turn-sheet" aria-hidden="true"></div>
-    </div>
-    <p id="status" role="status">Memuat buku...</p>
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
-  <script src="./assets/epub-reader.js"></script>
-</body>
+
+      #viewer.is-spread::after {
+        position: absolute;
+        z-index: 2;
+        inset: 0;
+        pointer-events: none;
+        content: "";
+        background: linear-gradient(
+          90deg,
+          transparent calc(50% - 1rem),
+          rgba(70, 53, 32, 0.08) 50%,
+          transparent calc(50% + 1rem)
+        );
+      }
+
+      #turn-sheet {
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        bottom: 0;
+        display: none;
+        width: 50%;
+        pointer-events: none;
+        background: linear-gradient(90deg, #f8f4ec, #fffefa 22%, #eee6d9);
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+
+      #viewer.is-single #turn-sheet {
+        width: 100%;
+      }
+
+      #viewer.turn-next #turn-sheet {
+        right: 0;
+        transform-origin: left center;
+        animation: turn-next 480ms ease-in forwards;
+      }
+
+      #viewer.turn-prev #turn-sheet {
+        left: 0;
+        transform-origin: right center;
+        animation: turn-prev 480ms ease-in forwards;
+      }
+
+      #viewer.turn-next #turn-sheet,
+      #viewer.turn-prev #turn-sheet {
+        display: block;
+      }
+
+      @keyframes turn-next {
+        from {
+          transform: rotateY(0);
+          box-shadow: -0.5rem 0 1rem rgba(35, 28, 20, 0.16);
+        }
+
+        to {
+          transform: rotateY(-180deg);
+          box-shadow: -1.5rem 0 2rem rgba(35, 28, 20, 0.25);
+        }
+      }
+
+      @keyframes turn-prev {
+        from {
+          transform: rotateY(0);
+          box-shadow: 0.5rem 0 1rem rgba(35, 28, 20, 0.16);
+        }
+
+        to {
+          transform: rotateY(180deg);
+          box-shadow: 1.5rem 0 2rem rgba(35, 28, 20, 0.25);
+        }
+      }
+
+      #status {
+        min-height: 1.5rem;
+        margin: 0;
+        text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        header {
+          flex-wrap: wrap;
+        }
+
+        header h1 {
+          flex-basis: 100%;
+        }
+
+        nav {
+          flex-wrap: wrap;
+        }
+
+        #chapter-select {
+          order: 1;
+          flex-basis: 100%;
+          width: 100%;
+        }
+
+        #previous,
+        #next {
+          flex: 1;
+        }
+
+        #viewer {
+          height: calc(100vh - 14rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Pratinjau EPUB: Quarto Template</h1>
+      <a href="./index.html">Kembali ke buku</a>
+      <a href="./Quarto-Template.epub" download>Unduh EPUB</a>
+    </header>
+    <main>
+      <nav aria-label="Navigasi buku">
+        <button id="previous" type="button" disabled>Sebelumnya</button>
+        <label for="chapter-select" hidden>Pilih bab</label>
+        <select id="chapter-select" aria-label="Pilih bab" disabled>
+          <option value="">Sampul</option>
+        </select>
+        <button id="next" type="button" disabled>Berikutnya</button>
+      </nav>
+      <div id="viewer" class="is-single" aria-label="Pembaca EPUB">
+        <div id="turn-sheet" aria-hidden="true"></div>
+      </div>
+      <p id="status" role="status">Memuat buku...</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+    <script src="./assets/epub-reader.js"></script>
+  </body>
 </html>

@@ -37,19 +37,19 @@ ebook-template-quarto/
 
 ### Fungsi folder dan file
 
-| Folder/File | Fungsi |
-|---|---|
-| `index.qmd` | Halaman awal buku, termasuk informasi dan pengantar penulis |
-| `chapters/` | Menyimpan setiap bab buku dalam format `.qmd` |
-| `references/` | Menyimpan daftar pustaka BibTeX dan halaman referensi |
-| `images/` | Menyimpan sampul, logo, foto penulis, dan gambar pendukung bab |
-| `assets/` | Menyimpan CSS dan konfigurasi LaTeX |
-| `data/` | Menyimpan dataset pendukung buku |
-| `R/` | Menyimpan skrip R pendukung |
-| `docs/` | Hasil render HTML yang diterbitkan GitHub Pages dari branch `main` |
-| `.nojekyll` | Memastikan GitHub Pages menyajikan berkas hasil Quarto tanpa pemrosesan Jekyll |
+| Folder/File   | Fungsi                                                                              |
+| ------------- | ----------------------------------------------------------------------------------- |
+| `index.qmd`   | Halaman awal buku, termasuk informasi dan pengantar penulis                         |
+| `chapters/`   | Menyimpan setiap bab buku dalam format `.qmd`                                       |
+| `references/` | Menyimpan daftar pustaka BibTeX dan halaman referensi                               |
+| `images/`     | Menyimpan sampul, logo, foto penulis, dan gambar pendukung bab                      |
+| `assets/`     | Menyimpan CSS dan konfigurasi LaTeX                                                 |
+| `data/`       | Menyimpan dataset pendukung buku                                                    |
+| `R/`          | Menyimpan skrip R pendukung                                                         |
+| `docs/`       | Hasil render HTML yang diterbitkan GitHub Pages dari branch `main`                  |
+| `.nojekyll`   | Memastikan GitHub Pages menyajikan berkas hasil Quarto tanpa pemrosesan Jekyll      |
 | `_quarto.yml` | Konfigurasi utama Quarto Book, urutan bab, format keluaran, dan folder hasil render |
-| `.gitignore` | Menentukan file lokal/hasil render yang tidak perlu diunggah ke Git |
+| `.gitignore`  | Menentukan file lokal/hasil render yang tidak perlu diunggah ke Git                 |
 
 ## 2. Persiapan perangkat lunak
 

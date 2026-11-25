@@ -3,13 +3,13 @@ project:
   output-dir: docs
   resources:
     - .nojekyll
-    - images/author/Bakti.png
+    - images/author/Foto.png
     - epub-reader.html
     - assets/epub-reader.js
 
 book:
   title: "Quarto Template"
-  author: "Bakti Siregar, M.Sc."
+  author: "Hashif Syah Jihan"
   date: today
   description: "Deskripsi singkat tentang buku"
   cover-image: images/Cover.png
